@@ -14,6 +14,7 @@ namespace KindergartenApp.ModelValidators
 		// read more: https://www.carlrippon.com/fluentvalidation-in-an-asp-net-core-web-api/
 		public FlowerValidator(FlowersDbContext context)
 		{
+
 			//RuleFor(x => x.MarketPrice).InclusiveBetween(5, 1000);
 			RuleFor(x => x.MarketPrice).InclusiveBetween(5, context.Flowers.Select(f => f.MarketPrice).Max());
 			RuleFor(x => x.DateAdded).LessThan(DateTime.Now);
