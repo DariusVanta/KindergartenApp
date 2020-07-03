@@ -79,6 +79,7 @@ namespace KindergartenApp.Controllers
         [HttpPost]
         public async Task<ActionResult<Flower>> PostFlower(Flower flower)
         {
+            //if(!ModelState.IsValid)
             _context.Flowers.Add(flower);
             await _context.SaveChangesAsync();
 
