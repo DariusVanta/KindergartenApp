@@ -1,6 +1,6 @@
 using System;
 
-namespace KindergartenApp
+namespace KindergartenApp.Models
 {
     public class WeatherForecast
     {
