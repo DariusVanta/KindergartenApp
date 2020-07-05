@@ -56,7 +56,8 @@ namespace KindergartenApp.Models
                         Age = 2.7,
                         Height = 100,
                         Weight = 13.2,
-                        ChildrenGroup = ChildrenGroup.Small
+                        ChildrenGroup = ChildrenGroup.Small,
+                        KindergartenID = 1
                     },
                     new Child
                     {
@@ -66,7 +67,8 @@ namespace KindergartenApp.Models
                         Age = 7.0,
                         Height = 140,
                         Weight = 30.0,
-                        ChildrenGroup = ChildrenGroup.Bigger
+                        ChildrenGroup = ChildrenGroup.Bigger,
+                        KindergartenID = 2
                     },
                     new Child
                     {
@@ -76,7 +78,54 @@ namespace KindergartenApp.Models
                         Age = 6.0,
                         Height = 120,
                         Weight = 22.0,
-                        ChildrenGroup = ChildrenGroup.Middle
+                        ChildrenGroup = ChildrenGroup.Middle,
+                        KindergartenID = 1
+                    }
+                );
+                context.SaveChanges();
+            }
+            //using (var context = new KindergardensDbContext(serviceProvider.GetRequiredService<DbContextOptions<ChildrenDbContext>>()))
+            using (var context = new ChildrenDbContext(serviceProvider.GetRequiredService<DbContextOptions<ChildrenDbContext>>()))
+            {
+                // Look for any children.
+                if (context.Children.Any())
+                {
+                    return;   // Children DB table has been seeded
+                }
+
+                context.Children.AddRange(
+                    new Child
+                    {
+                        Name = "Ericka-Alexandra Vanta",
+                        Gender = "Girl",
+                        Characterization = "Dynamic and spontaneous",
+                        Age = 2.7,
+                        Height = 100,
+                        Weight = 13.2,
+                        ChildrenGroup = ChildrenGroup.Small,
+                        KindergartenID = 1
+                    },
+                    new Child
+                    {
+                        Name = "Denis-Alexandru Calin",
+                        Gender = "Boy",
+                        Characterization = "Dynamic and spontaneous",
+                        Age = 7.0,
+                        Height = 140,
+                        Weight = 30.0,
+                        ChildrenGroup = ChildrenGroup.Bigger,
+                        KindergartenID = 2
+                    },
+                    new Child
+                    {
+                        Name = "Eric Nicolae Trasca",
+                        Gender = "Boy",
+                        Characterization = "Calm and obedient",
+                        Age = 6.0,
+                        Height = 120,
+                        Weight = 22.0,
+                        ChildrenGroup = ChildrenGroup.Middle,
+                        KindergartenID = 1
                     }
                 );
                 context.SaveChanges();

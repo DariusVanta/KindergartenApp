@@ -6,9 +6,9 @@ namespace KindergartenApp.Models
     {
         public FlowersDbContext(DbContextOptions<FlowersDbContext> options)
             : base(options)
-    {
-    }
+        {
+        }
 
     public DbSet<Flower> Flowers { get; set; }
-}
+    }
 }

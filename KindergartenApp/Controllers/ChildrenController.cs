@@ -47,7 +47,7 @@ namespace KindergartenApp.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutChild(long id, Child child)
         {
-            if (id != child.Id)
+            if (id != child.ChildId)
             {
                 return BadRequest();
             }
@@ -82,7 +82,7 @@ namespace KindergartenApp.Controllers
             _context.Children.Add(child);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetChild", new { id = child.Id }, child);
+            return CreatedAtAction("GetChild", new { id = child.ChildId }, child);
         }
 
         // DELETE: api/Children/5
@@ -103,7 +103,7 @@ namespace KindergartenApp.Controllers
 
         private bool ChildExists(long id)
         {
-            return _context.Children.Any(e => e.Id == id);
+            return _context.Children.Any(e => e.ChildId == id);
         }
     }
 }

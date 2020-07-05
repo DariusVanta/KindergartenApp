@@ -22,9 +22,28 @@ namespace KindergartenApp.Controllers
 
         // GET: api/Flowers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Flower>>> GetFlowers()
+        public async Task<ActionResult<IEnumerable<Flower>>> GetFlowers(DateTimeOffset? from = null, DateTimeOffset? to = null)
         {
-            return await _context.Flowers.ToListAsync();
+            IQueryable<Flower> result = _context.Flowers;
+            if (from != null && to != null)
+            {
+                result = result.Where(f => from <= f.DateAdded && f.DateAdded <= to);
+            }
+            else if (from != null)
+            {
+                result = result.Where(f => from <= f.DateAdded);
+            }
+            else if (to != null)
+            {
+                result = result.Where(f => f.DateAdded <= to);
+            }
+            return await result.ToListAsync();
+
+            //return await _
+            //    .Where(f => from <= f.DateAdded && f.DateAdded <= to)
+            //    .ToListAsync();
+
+            //return await _context.Flowers.ToListAsync();
         }
 
         // GET: api/Flowers/5
