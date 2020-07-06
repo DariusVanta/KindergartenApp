@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace KindergartenApp.Migrations.ChildrenDb
+namespace KindergartenApp.Migrations
 {
-    public partial class NewPcInitialCreate : Migration
+    public partial class InitialCreate4 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

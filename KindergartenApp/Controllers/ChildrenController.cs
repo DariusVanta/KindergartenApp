@@ -13,9 +13,9 @@ namespace KindergartenApp.Controllers
     [ApiController]
     public class ChildrenController : ControllerBase
     {
-        private readonly ChildrenDbContext _context;
+        private readonly KindergartensDbContext _context;
 
-        public ChildrenController(ChildrenDbContext context)
+        public ChildrenController(KindergartensDbContext context)
         {
             _context = context;
         }
@@ -52,25 +52,32 @@ namespace KindergartenApp.Controllers
                 return BadRequest();
             }
 
+            if (!ChildExists(id))
+            {
+                return NotFound();
+            }
+
             _context.Entry(child).State = EntityState.Modified;
 
-            try
-            {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ChildExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return NoContent();
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!ChildExists(id))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
+
+            return Ok(child);
         }
 
         // POST: api/Children
@@ -96,6 +103,7 @@ namespace KindergartenApp.Controllers
             }
 
             _context.Children.Remove(child);
+           // _context.Entry(child).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
 
             return child;

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace KindergartenApp.Migrations
+namespace KindergartenApp.Migrations.FlowersDb
 {
     public partial class InitialCreate : Migration
     {
