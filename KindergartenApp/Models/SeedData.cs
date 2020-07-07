@@ -66,8 +66,8 @@ namespace KindergartenApp.Models
                         Age = 2.7,
                         Height = 100,
                         Weight = 13.2,
-                        ChildrenGroup = ChildrenGroup.Small,
-                        KindergartenID = 1
+                        ChildrenGroup = ChildrenGroup.Small //,
+                      //  KindergartenID = 1
                     },
                     new Child
                     {
@@ -77,8 +77,8 @@ namespace KindergartenApp.Models
                         Age = 7.0,
                         Height = 140,
                         Weight = 30.0,
-                        ChildrenGroup = ChildrenGroup.Bigger,
-                        KindergartenID = 2
+                       ChildrenGroup = ChildrenGroup.Bigger //,
+                     //   KindergartenID = 2
                     },
                     new Child
                     {
@@ -88,8 +88,8 @@ namespace KindergartenApp.Models
                         Age = 6.0,
                         Height = 120,
                         Weight = 22.0,
-                        ChildrenGroup = ChildrenGroup.Middle,
-                        KindergartenID = 1
+                       ChildrenGroup = ChildrenGroup.Middle//,
+                    //    KindergartenID = 1
                     }
 
                     //                    new Child
@@ -126,12 +126,12 @@ namespace KindergartenApp.Models
                     //    KindergartenID = 1
                     //}
                 );
-                context.SaveChanges();
-            }
+               // context.SaveChanges();
+           // }
             //using (var context = new KindergardensDbContext(serviceProvider.GetRequiredService<DbContextOptions<ChildrenDbContext>>()))
             //  using (var context = new ChildrenDbContext(serviceProvider.GetRequiredService<DbContextOptions<ChildrenDbContext>>()))
-            using (var context = new KindergartensDbContext(serviceProvider.GetRequiredService<DbContextOptions<KindergartensDbContext>>()))
-            {
+          //  using (var context = new KindergartensDbContext(serviceProvider.GetRequiredService<DbContextOptions<KindergartensDbContext>>()))
+          //  {
                 // Look for any Kindergarten 
 
                 //KindergartenId 
@@ -146,6 +146,7 @@ namespace KindergartenApp.Models
                 {
                     return;   // Kindergarten DB table has been seeded
                 }
+
 
                 context.Kindergartens.AddRange(
                     new Kindergarten
@@ -167,10 +168,10 @@ namespace KindergartenApp.Models
                             Capacity = 100,
                         }
                 );
-                context.SaveChanges();
-            }
-            using (var context = new KindergartensDbContext(serviceProvider.GetRequiredService<DbContextOptions<KindergartensDbContext>>()))
-            {
+               // context.SaveChanges();
+           // }
+          //  using (var context = new KindergartensDbContext(serviceProvider.GetRequiredService<DbContextOptions<KindergartensDbContext>>()))
+            //{
                 // Look for any Users 
 
                 if (context.Users.Any())
@@ -211,7 +212,7 @@ namespace KindergartenApp.Models
                     new User
                      {
                          FirstName = "Gabriel",
-                         LastName = "ibraileanu",
+                         LastName = "Ibraileanu",
                          Username = "Ibrahim",
                          Phone = "+40730123456",
                          Email = "gabriel.ibraileanu@kindergartens.com",

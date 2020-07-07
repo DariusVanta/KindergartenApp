@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace KindergartenApp.Migrations.FlowersDb
+namespace KindergartenApp.Migrations
 {
     [DbContext(typeof(FlowersDbContext))]
-    [Migration("20200706022033_InitialCreateF2")]
-    partial class InitialCreateF2
+    [Migration("20200707150338_InitalCreate")]
+    partial class InitalCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace KindergartenApp.Migrations
+namespace KindergartenApp.Migrations.KindergartensDb
 {
     [DbContext(typeof(KindergartensDbContext))]
-    [Migration("20200706003213_InitialCreate1")]
-    partial class InitialCreate1
+    [Migration("20200707150442_InitalCreate")]
+    partial class InitalCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,9 +43,6 @@ namespace KindergartenApp.Migrations
                     b.Property<long>("Height")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("KindergartenID")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -53,8 +50,6 @@ namespace KindergartenApp.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("ChildId");
-
-                    b.HasIndex("KindergartenID");
 
                     b.ToTable("Children");
                 });
@@ -133,23 +128,14 @@ namespace KindergartenApp.Migrations
                     b.ToTable("UserKindergartens");
                 });
 
-            modelBuilder.Entity("KindergartenApp.Models.Child", b =>
-                {
-                    b.HasOne("KindergartenApp.Models.Kindergarten", "Kindergarten")
-                        .WithMany("Children")
-                        .HasForeignKey("KindergartenID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("KindergartenApp.Models.UserKindergarten", b =>
                 {
                     b.HasOne("KindergartenApp.Models.Kindergarten", "Kindergarten")
-                        .WithMany("UserKindergartens")
+                        .WithMany()
                         .HasForeignKey("KindergartenId");
 
                     b.HasOne("KindergartenApp.Models.User", "User")
-                        .WithMany("UserKindergatens")
+                        .WithMany()
                         .HasForeignKey("UserId1");
                 });
 #pragma warning restore 612, 618

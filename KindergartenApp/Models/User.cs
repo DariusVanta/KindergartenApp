@@ -14,7 +14,7 @@ namespace KindergartenApp.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public IList<UserKindergarten> UserKindergatens { get; set; } // = new List<UserKindergarten>();
+       // public IList<UserKindergarten> UserKindergatens { get; set; } // = new List<UserKindergarten>();
         //where one Teacher/User can enroll for many Kindergatens and, in the same way, one Kindergaten can be joined by many Teachers/Users .
     }
 }

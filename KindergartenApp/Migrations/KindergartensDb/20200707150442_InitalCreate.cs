@@ -1,11 +1,30 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace KindergartenApp.Migrations
+namespace KindergartenApp.Migrations.KindergartensDb
 {
-    public partial class InitialCreate : Migration
+    public partial class InitalCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Children",
+                columns: table => new
+                {
+                    ChildId = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    Gender = table.Column<string>(nullable: true),
+                    Characterization = table.Column<string>(nullable: true),
+                    Age = table.Column<double>(nullable: false),
+                    Height = table.Column<long>(nullable: false),
+                    Weight = table.Column<double>(nullable: false),
+                    ChildrenGroup = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Children", x => x.ChildId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Kindergartens",
                 columns: table => new
@@ -40,32 +59,6 @@ namespace KindergartenApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Children",
-                columns: table => new
-                {
-                    ChildId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Gender = table.Column<string>(nullable: true),
-                    Characterization = table.Column<string>(nullable: true),
-                    Age = table.Column<double>(nullable: false),
-                    Height = table.Column<long>(nullable: false),
-                    Weight = table.Column<double>(nullable: false),
-                    ChildrenGroup = table.Column<int>(nullable: false),
-                    KindergartenID = table.Column<long>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Children", x => x.ChildId);
-                    table.ForeignKey(
-                        name: "FK_Children_Kindergartens_KindergartenID",
-                        column: x => x.KindergartenID,
-                        principalTable: "Kindergartens",
-                        principalColumn: "KindergartenId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "UserKindergartens",
                 columns: table => new
                 {
@@ -90,11 +83,6 @@ namespace KindergartenApp.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Children_KindergartenID",
-                table: "Children",
-                column: "KindergartenID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserKindergartens_KindergartenId",

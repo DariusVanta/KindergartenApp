@@ -52,32 +52,25 @@ namespace KindergartenApp.Controllers
                 return BadRequest();
             }
 
-            if (!ChildExists(id))
-            {
-                return NotFound();
-            }
-
             _context.Entry(child).State = EntityState.Modified;
 
+            try
+            {
                 await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ChildExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-            //try
-            //{
-            //    await _context.SaveChangesAsync();
-            //}
-            //catch (DbUpdateConcurrencyException)
-            //{
-            //    if (!ChildExists(id))
-            //    {
-            //        return NotFound();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-
-            return Ok(child);
+            return NoContent();
         }
 
         // POST: api/Children
@@ -103,7 +96,6 @@ namespace KindergartenApp.Controllers
             }
 
             _context.Children.Remove(child);
-           // _context.Entry(child).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
 
             return child;

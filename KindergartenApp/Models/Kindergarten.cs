@@ -14,9 +14,9 @@ namespace KindergartenApp.Models
         public string Address { get; set; }
         public long Capacity { get; set; }
 
-        public ICollection<Child> Children { get; set; } // 4 one to many  o gradinita cu mai multi copii
+       // public ICollection<Child> Children { get; set; } // 4 one to many  o gradinita cu mai multi copii
 
         //4 M2M 
-        public IList<UserKindergarten> UserKindergartens { get; set; } = new List<UserKindergarten>();
+     //   public IList<UserKindergarten> UserKindergartens { get; set; } = new List<UserKindergarten>();
     }
 }
